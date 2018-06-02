@@ -1,0 +1,27 @@
+#{extends 'main.html' /}
+#{set title:'Detalhes' /}
+<iframe align="right" src="@{Estacoes.mapa(estacao.id)}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i>Detalhes da Estação</div>
+            <div class="card-body">
+                <div class="form-group">
+                    ID: ${estacao?.id}
+		</div>
+		<div class="form-group">
+                    Nome: ${estacao?.nome}
+		</div>
+		<div class="form-group">
+                    Nome: ${estacao?.nome}
+        	</div>
+		<div class="form-group">
+                    Localização: <a target="_new" href="http://maps.google.com/maps?f=q&q=${estacao?.latitude},${estacao?.longitude}">${estacao?.latitude},${estacao?.longitude}</a>
+		</div>
+                <div class="form-group">
+                    Chave: ${estacao?.chave}
+		</div>
+                <a href="@{Estacoes.editar(estacao.id)}"><i class="fa fa-edit">Editar</i></a><br>
+                <a href="@{Estacoes.remover(estacao.id)}"><i class="fa fa-edit">Remover</i></a>
+	</div>
+</div>
+

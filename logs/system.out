@@ -1,0 +1,117 @@
+Listening for transport dt_socket at address: 8000
+12:06:59,161 INFO  ~ Starting D:\WSD\play-1.4.5\webclimate
+12:06:59,833 WARN  ~ You're running Play! in DEV mode
+12:07:00,152 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+~ Server is up and running
+12:07:02,662 WARN  ~ Exception on request. serving 500 back
+org.h2.jdbc.JdbcSQLException: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: JVM_Bind" [90061-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:199)
+	at org.h2.util.NetUtils.createServerSocket(NetUtils.java:165)
+	at org.h2.server.web.WebServer.start(WebServer.java:342)
+	at org.h2.tools.Server.start(Server.java:484)
+	at play.db.DBPlugin.rawInvocation(DBPlugin.java:64)
+	at play.plugins.PluginCollection.rawInvocation(PluginCollection.java:781)
+	at Invocation.Message Received(Play!)
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:195)
+	... 6 more
+12:07:03,449 ERROR ~ 
+
+@7864fc55a
+Internal Server Error (500) for request null null
+
+Oops: JdbcSQLException
+Unexpected error : Unexpected Error, caused by exception JdbcSQLException: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: JVM_Bind" [90061-193]
+
+play.exceptions.UnexpectedException: Unexpected Error
+	at play.server.PlayHandler.serve500(PlayHandler.java:801)
+	at Invocation.Message Received(Play!)
+Caused by: org.h2.jdbc.JdbcSQLException: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: JVM_Bind" [90061-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:199)
+	at org.h2.util.NetUtils.createServerSocket(NetUtils.java:165)
+	at org.h2.server.web.WebServer.start(WebServer.java:342)
+	at org.h2.tools.Server.start(Server.java:484)
+	at play.db.DBPlugin.rawInvocation(DBPlugin.java:64)
+	at play.plugins.PluginCollection.rawInvocation(PluginCollection.java:781)
+	... 1 more
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:195)
+	... 6 more
+12:07:07,996 WARN  ~ Exception on request. serving 500 back
+org.h2.jdbc.JdbcSQLException: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: JVM_Bind" [90061-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:199)
+	at org.h2.util.NetUtils.createServerSocket(NetUtils.java:165)
+	at org.h2.server.web.WebServer.start(WebServer.java:342)
+	at org.h2.tools.Server.start(Server.java:484)
+	at play.db.DBPlugin.rawInvocation(DBPlugin.java:64)
+	at play.plugins.PluginCollection.rawInvocation(PluginCollection.java:781)
+	at Invocation.Message Received(Play!)
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:195)
+	... 6 more
+12:07:08,000 ERROR ~ 
+
+@7864fc55b
+Internal Server Error (500) for request null null
+
+Oops: JdbcSQLException
+Unexpected error : Unexpected Error, caused by exception JdbcSQLException: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: JVM_Bind" [90061-193]
+
+play.exceptions.UnexpectedException: Unexpected Error
+	at play.server.PlayHandler.serve500(PlayHandler.java:801)
+	at Invocation.Message Received(Play!)
+Caused by: org.h2.jdbc.JdbcSQLException: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: JVM_Bind" [90061-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:199)
+	at org.h2.util.NetUtils.createServerSocket(NetUtils.java:165)
+	at org.h2.server.web.WebServer.start(WebServer.java:342)
+	at org.h2.tools.Server.start(Server.java:484)
+	at play.db.DBPlugin.rawInvocation(DBPlugin.java:64)
+	at play.plugins.PluginCollection.rawInvocation(PluginCollection.java:781)
+	... 1 more
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at org.h2.util.NetUtils.createServerSocketTry(NetUtils.java:195)
+	... 6 more
+12:07:23,418 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL for default
+12:07:24,218 INFO  ~ HHH000262: Table not found: Estacao
+12:07:24,221 INFO  ~ HHH000262: Table not found: Registro
+12:07:24,223 INFO  ~ HHH000262: Table not found: Estacao
+12:07:24,225 INFO  ~ HHH000262: Table not found: Registro
+12:07:24,226 INFO  ~ HHH000262: Table not found: Estacao
+12:07:24,228 INFO  ~ HHH000262: Table not found: Registro
+12:07:24,306 INFO  ~ Application 'clientes' is now started !

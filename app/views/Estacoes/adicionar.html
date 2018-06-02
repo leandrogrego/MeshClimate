@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<div class="card mb-3">
+	  <div class="card-header">
+	    <i class="fa fa-table"></i>Cadastro de Estação</div>
+	  <div class="card-body">
+          
+		<form action="@{Estacoes.salvar}" method="post">
+			
+		   <input type="hidden" value="${estacao?.id}" name="estacao.id">
+			
+			<div class="form-group">
+			   <label for="nome">Nome</label>
+			   <input class="form-control" id="nome" type="text" value="${estacao?.nome}" name="estacao.nome">
+			</div>
+			
+			<div class="form-group">
+			   <label for="Localizacao">Latitude</label>
+			   <input class="form-control" id="latitude" type="text" value="${estacao?.latitude}" name="estacao.latitude">
+			</div>
+                        <div class="form-group">
+			   <label for="Localizacao">Longitude</label>
+			   <input class="form-control" id="longitude" type="text" value="${estacao?.longitude}" name="estacao.longitude">
+			</div>
+			<input class="btn btn-primary btn-block" type="submit" value="Salvar">
+		</form>
+	</div>
+</div>
