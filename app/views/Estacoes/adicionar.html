@@ -23,7 +23,14 @@
 			   <label for="Localizacao">Longitude</label>
 			   <input class="form-control" id="longitude" type="text" value="${estacao?.longitude}" name="estacao.longitude">
 			</div>
-			<input class="btn btn-primary btn-block" type="submit" value="Salvar">
+                   
+                   <input class="btn btn-success btn-block" type="submit" value="Salvar">
+                   
+                        <br>
+			<a href="@{Estacoes.listar}">
+                            <input type=button value="Cancelar" class="btn btn-danger btn-block">
+                        </a>
+                
 		</form>
 	</div>
 </div>

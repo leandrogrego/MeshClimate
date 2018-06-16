@@ -1,16 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Listar Estações' /}
 
-<!-- <h1>Listar Clientes</h1> -->
-
-<!-- <ul> -->
-<!-- #{list items:clientes, as:'cliente'} -->
-<!-- 	<li> ${cliente.nome} </li> -->
-<!-- #{/list} -->
-<!-- </ul> -->
-<!-- #{else}Nenhum Cliente na lista.#{/else} -->
-
-
 <div class="card mb-3">
  <div class="card-header">
    <i class="fa fa-table"></i>Listagem de Estaçoes</div>
@@ -31,10 +21,17 @@
            <td>${estacao.status}</td>
            <td>
                         
-                        <a href="@{Estacoes.detalhes(estacao.id)}"><i class="fa fa-signal">Detalhes</i></a>               
-                        <a href="@{Estacoes.editar(estacao.id)}"><i class="fa fa-edit">Editar</i></a>
-
-           	</td>
+               <a href="@{Estacoes.detalhes(estacao.id)}">
+                   <button class="btn btn-sm btn-info">
+                       <i class="fa fa-user">Detalhes</i>
+                   </button>
+                </a>               
+                <a href="@{Estacoes.editar(estacao.id)}">
+                    <button class="btn btn-sm btn-success">
+                        <i class="fa fa-edit">Editar</i>
+                    </button>
+                </a>
+            </td>
          </tr>
 	#{/list}
 	</tbody>

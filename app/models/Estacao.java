@@ -8,7 +8,7 @@ import play.db.jpa.Model;
 public class Estacao extends Model {
 	
         public String nome;
-	public String sstatus;
+	public String status;
         public String latitude;
         public String longitude;
         public int chave;

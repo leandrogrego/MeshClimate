@@ -1,0 +1,23 @@
+#{extends 'layout.html' /}
+#{set title:'Login no Sistema' /}
+
+<div class="card mb-3">
+	  <div class="card-header">
+	    <i class="fa fa-table"></i>Login no Sistema</div>
+	  <div class="card-body">
+          
+		<form action="@{Application.login()}" method="post">
+                    <div class="form-group">
+                        <label for="nome">E-mail:</label>
+			<input class="form-control" id="email" type="email" value="${login?.email}" name="login.email">
+                    </div>
+			
+                    <div class="form-group">
+                        <label for="Localizacao">Senha: </label>
+                        <input class="form-control" id="password" type="password" value="" name="login.password">
+                    </div>
+                    <input class="btn btn-success btn-block" type="submit" value="Entrar">
+                   
+		</form>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Detalhes' /}
+<div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i>Detalhes da Usuário</div>
+            <div class="card-body">
+                <div class="form-group">
+                    ID: ${usuario?.id}
+		</div>
+		<div class="form-group">
+                    Nome: ${usuario?.nome}
+		</div>
+		<div class="form-group">
+                    E-mail: ${usuario?.email}
+        	</div>
+		<a href="@{Usuarios.editar(usuario.id)}">
+                    <button class="btn btn-primary btn-block">
+                        <i class="fa fa-edit"> Editar</i>
+                    </button>
+                    </a><br>
+                <a href="@{Usuarios.remover(usuario.id)}">
+                    <button class="btn btn-danger btn-block">
+                        <i class="fa fa-trash"> Remover</i>
+                    </button>
+                </a><br>
+                <a href="@{Usuarios.listar}">
+                    <button class="btn btn-warning btn-block">
+                        <i class="fa fa-list"> Listar</i>
+                    </button>
+                </a><br>
+	</div>
+</div>
+

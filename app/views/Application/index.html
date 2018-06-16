@@ -3,5 +3,29 @@
 
 <h1>Bem vindo!</h1>
 
-<a href="@{Estacoes.listar}">Cadastrar Nova Estações</a> - 
-<a href="@{Estacoes.listar}">Lista de Estações</a>
+<div class="card-header">
+    <i class="fa fa-user"></i>Usuários <br/>
+    <a href="@{Usuarios.listar}">
+    <Button class="btn btn-group-justified btn-info">
+        Listar usuário
+    </Button>
+    </a>
+    <a href="@{Usuarios.adicionar}">
+        <Button class="btn btn-group-justified btn-success">
+            Adicionar Usuário
+        </Button>
+    </A>
+</div>
+<div class="card-header">
+    <i class="fa fa-wrench"></i>Estação <br />
+    <a href="@{Estacoes.listar}">
+    <Button class="btn btn-group-justified btn-info">
+        Listar Estações
+    </Button>
+    </a>
+    <a href="@{Usuarios.adicionar}">
+        <Button class="btn btn-group-justified btn-success">
+            Adicionar Estação
+        </Button>
+    </a>
+</div>

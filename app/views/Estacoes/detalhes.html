@@ -12,16 +12,48 @@
                     Nome: ${estacao?.nome}
 		</div>
 		<div class="form-group">
-                    Nome: ${estacao?.nome}
-        	</div>
-		<div class="form-group">
                     Localização: <a target="_new" href="http://maps.google.com/maps?f=q&q=${estacao?.latitude},${estacao?.longitude}">${estacao?.latitude},${estacao?.longitude}</a>
 		</div>
                 <div class="form-group">
                     Chave: ${estacao?.chave}
 		</div>
-                <a href="@{Estacoes.editar(estacao.id)}"><i class="fa fa-edit">Editar</i></a><br>
-                <a href="@{Estacoes.remover(estacao.id)}"><i class="fa fa-edit">Remover</i></a>
+                <a href="@{Estacoes.editar(estacao.id)}">
+                    <button class="btn btn-primary btn-block">
+                        <i class="fa fa-edit"> Editar</i>
+                    </button>
+                    </a><br>
+                <a href="@{Estacoes.remover(estacao.id)}">
+                    <button class="btn btn-danger btn-block">
+                        <i class="fa fa-trash"> Remover</i>
+                    </button>
+                </a><br>
+                <a href="@{Estacoes.listar}">
+                    <button class="btn btn-warning btn-block">
+                        <i class="fa fa-list"> Listar</i>
+                    </button>
+                </a><br>
+                
 	</div>
 </div>
-
+     <table class="table dataTable" id="">
+       <thead>
+        
+         <th rowspan="1" colspan="1">Data - Hora</th>
+         <th rowspan="1" colspan="1">Temperatura</th>
+         <th rowspan="1" colspan="1">Umidade</th>
+         <th rowspan="1" colspan="1">Velocidade</th>
+         <th rowspan="1" colspan="1">Pressão</th>
+       </thead>
+       <tbody>
+	#{list items:registros, as:'registro'}
+		<tr role="row">
+        
+           <td>${registro.datahora}</td>
+           <td>${registro.temperatura}</td>
+           <td>${registro.umidade}</td>
+           <td>${registro.velocidade}</td>
+           <td>${registro.pressao}</td>
+         </tr>
+	#{/list}
+	</tbody>
+    </table>
