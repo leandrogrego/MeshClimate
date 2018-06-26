@@ -33,19 +33,19 @@ public class Registros extends Controller{
 	}
 	
 	public static void listar(){
-            if(!checkLogin()){logout();}
+            if(checkLogin()==null){logout();}
             List<Registro> registro = Registro.findAll();
             render(registro);
 	}
         
         public static void listarEstacao(Long estacao_id) {
-            if(!checkLogin()){logout();}
+            if(checkLogin()==null){logout();}
 		List<Registro> registros = Registro.find("byEstacao_id", estacao_id).fetch();
 		render(registros);
 	}
 	
 	public static void remover(Long id) {
-            if(!checkLogin()){logout();}
+            if(checkLogin()==null){logout();}
 		Registro registro = Registro.findById(id);
 		registro.delete();
 		listar();

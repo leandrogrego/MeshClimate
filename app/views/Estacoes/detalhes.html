@@ -2,42 +2,74 @@
 #{set title:'Detalhes' /}
 <iframe align="right" src="@{Estacoes.mapa(estacao.id)}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-table"></i>Detalhes da Estação</div>
-            <div class="card-body">
-                <div class="form-group">
-                    ID: ${estacao?.id}
-		</div>
-		<div class="form-group">
-                    Nome: ${estacao?.nome}
-		</div>
-		<div class="form-group">
-                    Localização: <a target="_new" href="http://maps.google.com/maps?f=q&q=${estacao?.latitude},${estacao?.longitude}">${estacao?.latitude},${estacao?.longitude}</a>
-		</div>
-                <div class="form-group">
-                    Chave: ${estacao?.chave}
-		</div>
-                <a href="@{Estacoes.editar(estacao.id)}">
-                    <button class="btn btn-primary btn-block">
-                        <i class="fa fa-edit"> Editar</i>
-                    </button>
-                    </a><br>
-                <a href="@{Estacoes.remover(estacao.id)}">
-                    <button class="btn btn-danger btn-block">
-                        <i class="fa fa-trash"> Remover</i>
-                    </button>
-                </a><br>
-                <a href="@{Estacoes.listar}">
-                    <button class="btn btn-warning btn-block">
-                        <i class="fa fa-list"> Listar</i>
-                    </button>
-                </a><br>
-                
-	</div>
+    <div class="card-header">
+        <i class="fa fa-table"></i>Detalhes da Estação</div>
+    <div class="card-body">
+    <div class="form-group">
+        ID: ${estacao?.id}
+    </div>
+    <div class="form-group">
+        Nome: ${estacao?.nome}
+    </div>
+    <div class="form-group">
+        Localização: <a target="_new" href="http://maps.google.com/maps?f=q&q=${estacao?.latitude},${estacao?.longitude}">${estacao?.latitude},${estacao?.longitude}</a>
+    </div>
+    <div class="form-group">
+        Chave: ${estacao?.chave}
+    </div>
+    <br>
+    <form action="@{Estacoes.editar}" method="get">
+        <input type="hidden" name="id" value="${estacao.id}">
+        <input type="submit" class="btn btn-primary btn-block" value="Editar">
+    </form>
+    <br>
+    <script>
+        function confirmDelete(form){
+            r = confirm("Tem Certeza que deseja remover a estação?");
+            if(r){
+                form.action = "@{Estacoes.remover}";
+            }
+        }
+    </script>
+    <form onsubmit="confirmDelete(this)" action="" method="get">
+        <input type="hidden" name="id" value="${estacao.id}">
+        <input type="submit" class="btn btn-danger btn-block" value="Remover">
+    </form>
+    <br>
+    <form action="@{Estacoes.listar}" method="get">
+        <input type="submit" class="btn btn-warning btn-block" value="Listar">
+    </form>
+    <br>
 </div>
-     <table class="table dataTable" id="">
+<div>
+    <table class="table dataTable" id="">
        <thead>
-        
+         <th rowspan="1" colspan="3">USUÁRIOS DE MANUTENÇÃO</th>
+       </thead>
+        <thead>
+            <th rowspan="1" colspan="1">#ID</th>
+            <th rowspan="1" colspan="1">Nome</th>
+            <th rowspan="1" colspan="1">E-mail</th>
+       </thead>
+    #{if estacao?.usuarios}
+    
+        #{list items:estacao.usuarios, as:'usuario'}
+        <tr>
+            <th rowspan="1" colspan="1">${usuario.id}</th>
+            <th rowspan="1" colspan="1">${usuario.nome}</th>
+            <th rowspan="1" colspan="1">${usuario.email}</th>
+       </tr>
+       #{/list}
+    #{/if}
+    #{else}
+    <tr><td colspan="3">Nenhum usuario com permissão às configurções desta estação.</td></tr>
+    #{/else}
+       
+    </table>
+</div>
+</div>
+     <table class="table dataTable" id="dataTable">
+       <thead>
          <th rowspan="1" colspan="1">Data - Hora</th>
          <th rowspan="1" colspan="1">Temperatura</th>
          <th rowspan="1" colspan="1">Umidade</th>
@@ -45,9 +77,8 @@
          <th rowspan="1" colspan="1">Pressão</th>
        </thead>
        <tbody>
-	#{list items:registros, as:'registro'}
+	#{list items:estacao.registros, as:'registro'}
 		<tr role="row">
-        
            <td>${registro.datahora}</td>
            <td>${registro.temperatura}</td>
            <td>${registro.umidade}</td>

@@ -28,6 +28,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    ${login?.nome}
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -56,13 +57,16 @@
             <li>
               <a href="@{Usuarios.listar}">Listar</a>
             </li>
-         </ul>
+          </ul>
+          
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="@{Application.logout}" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Sair</span>
+          </a>
+        </li>
       </ul>
-    </div>
-    <div>
-      <a class="nav-link-text" href="@{Application.logout}">
-        <span class="nav-link-text">Sair</span>
-      </a>
     </div>
   </nav>
   <div class="content-wrapper">

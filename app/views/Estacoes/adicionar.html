@@ -2,35 +2,36 @@
 #{set title:'Formulário' /}
 
 <div class="card mb-3">
-	  <div class="card-header">
-	    <i class="fa fa-table"></i>Cadastro de Estação</div>
-	  <div class="card-body">
-          
-		<form action="@{Estacoes.salvar}" method="post">
-			
-		   <input type="hidden" value="${estacao?.id}" name="estacao.id">
-			
-			<div class="form-group">
-			   <label for="nome">Nome</label>
-			   <input class="form-control" id="nome" type="text" value="${estacao?.nome}" name="estacao.nome">
-			</div>
-			
-			<div class="form-group">
-			   <label for="Localizacao">Latitude</label>
-			   <input class="form-control" id="latitude" type="text" value="${estacao?.latitude}" name="estacao.latitude">
-			</div>
-                        <div class="form-group">
-			   <label for="Localizacao">Longitude</label>
-			   <input class="form-control" id="longitude" type="text" value="${estacao?.longitude}" name="estacao.longitude">
-			</div>
-                   
-                   <input class="btn btn-success btn-block" type="submit" value="Salvar">
-                   
-                        <br>
-			<a href="@{Estacoes.listar}">
-                            <input type=button value="Cancelar" class="btn btn-danger btn-block">
-                        </a>
-                
-		</form>
-	</div>
+    <div class="card-header">
+        <i class="fa fa-table"></i>Cadastro de Estação</div>
+    <div class="card-body">
+        <form action="@{Estacoes.salvar}" method="post">
+            <input type="hidden" value="${estacao?.id}" name="estacao.id">
+
+            <div class="form-group">
+               <label for="nome">Nome</label>
+               <input class="form-control" id="nome" type="text" value="${estacao?.nome}" name="estacao.nome">
+            </div>
+
+            <div class="form-group">
+               <label for="Localizacao">Latitude</label>
+               <input class="form-control" id="latitude" type="text" value="${estacao?.latitude}" name="estacao.latitude">
+            </div>
+            <div class="form-group">
+               <label for="Localizacao">Longitude</label>
+               <input class="form-control" id="longitude" type="text" value="${estacao?.longitude}" name="estacao.longitude">
+            </div>
+            <div class="form-group">
+               <label for="Localizacao">Gerar Nova Chave: </label>
+               <input id="chave" type="checkbox" value="-1" name="estacao.chave">
+            </div>
+
+            <input class="btn btn-success btn-block" type="submit" value="Salvar">
+
+            <br>
+            <a href="@{Estacoes.listar}">
+                <input type=button value="Cancelar" class="btn btn-danger btn-block">
+            </a>
+        </form>
+    </div>
 </div>

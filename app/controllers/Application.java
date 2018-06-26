@@ -4,21 +4,26 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import models.Usuario;
-import play.*;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
 import play.cache.Cache;
+import play.libs.Mail;
 import play.mvc.*;
 
 
 
 public class Application extends Controller {
-    public static void index() {
-        if(!checkLogin()){logout();}
+    Usuario login;
+    
+    
+    public static void index(){
+        if(checkLogin()==null){logout();}
         render();
     }
         
-    public static boolean checkLogin(){
+    public static Usuario checkLogin(){
         Usuario login = Cache.get(session.getId()+"-login", Usuario.class);
-        return (login!=null);
+        return login;
     }
     
     public static void login(Usuario login){
@@ -30,7 +35,6 @@ public class Application extends Controller {
                 logout();
             }else{
                 flash.error("");
-                System.out.println("Login de: "+login.email);
                 renderTemplate("Application/index.html");
             }
         } else{
@@ -59,4 +63,28 @@ public class Application extends Controller {
         return s;
     }
 
+    public void recuperaSenha(Usuario login) throws EmailException{
+            flash.clear();
+            if(login.email!=null){
+                List<Usuario> users = Usuario.find("email = ?", login.email).fetch(1);
+                if(users.size() > 0){
+                    login = users.get(0);
+                    SimpleEmail email = new SimpleEmail();
+                    email.setFrom("meshclimae@resetnet.com.br");
+                    email.addTo(login.email);
+                    email.setSubject("Recupareção de senha");
+                    email.setMsg("Olá"+ login.nome+".\n\n"
+                        + "Vocçê solicitou umaa recuparação de senha.\n"
+                        + "Sua senha para acesso ao MeshClimate: "
+                        + login.password 
+                        + "\n\n Equipe MeshClimate");
+                    Mail.send(email); 
+                    flash.success("<b>ATENÇÃO:</b> Foi enviado email de recuperação de senha para <b>"+login.email+".</n>");
+                    renderTemplate("/application/login.html");
+                } else {
+                    flash.error("<b>"+login.email + "</b> não foi localizado no sistema!");
+                }
+            }
+        render(login);
+    }
 }

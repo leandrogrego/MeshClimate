@@ -2,36 +2,125 @@
 #{set title:'Cadastro de Usuário' /}
 
 <div class="card mb-3">
-	  <div class="card-header">
-	    <i class="fa fa-table"></i>Cadastro de Usuários</div>
-	  <div class="card-body">
-          
-		<form action="@{Usuarios.salvar}" method="post">
-			
-		   <input type="hidden" value="${usuario?.id}" name="usuario.id">
-			
-			<div class="form-group">
-			   <label for="nome">#ID ${usuario?.id}</label>
-			</div>
-			<div class="form-group">
-			   <label for="nome">Nome</label>
-			   <input class="form-control" id="nome" type="text" value="${usuario?.nome}" name="usuario.nome">
-			</div>
-			<div class="form-group">
-			   <label for="Localizacao">E-mail</label>
-			   <input class="form-control" id="email" type="email" value="${usuario?.email}" name="usuario.email">
-			</div>
-                        <div class="form-group">
-			   <label for="Localizacao">Senha</label>
-			   <input class="form-control" id="password" type="password" value="${usuario?.password}" name="usuario.password">
-			</div>
-                   
-                   <input class="btn btn-success btn-block" type="submit" value="Salvar">
-                   
-                        <br>
-			<a href="@{Usuarios.listar}">
-                            <input type=button value="Cancelar" class="btn btn-danger btn-block">
-                        </a>          
-		</form>
-	</div>
+    <div class="card-header">
+        <i class="fa fa-table"></i>Cadastro de Usuários
+    </div>
+    <div class="card-body">
+        <form action="@{Usuarios.salvar}" method="get">
+            <input type="hidden" value="${usuario?.id}" name="usuario.id">
+            <div class="form-group">
+               <label for="ID">#ID ${usuario?.id}</label>
+            </div>
+            <div class="form-group">
+               <label for="nome">Nome</label>
+               <input class="form-control" id="nome" type="text" value="${usuario?.nome}" name="usuario.nome">
+            </div>
+            <div class="form-group">
+               <label for="email">E-mail</label>
+               <input class="form-control" id="email" type="email" value="${usuario?.email}" name="usuario.email">
+            </div>
+            <div class="form-group">
+               <label for="password">Senha</label>
+               <input class="form-control" id="password" type="password" value="${usuario?.password}" name="usuario.password">
+            </div>
+            
+            <div class="form-group">
+               <label for="status">Status</label>
+               <select class="form-control" name="usuario.perfil">
+                    #{list items:perfis, as:'perf'}
+                        <option value="${perf}" 
+                        ${(usuario?.id !=null && usuario?.perfil == perf)? 'selected':''}>${perf}</option>
+                    #{/list}
+               </select>
+            </div>
+            <div class="form-group">
+                <table class="table dataTable" id="permissoes">
+                    <thead>
+                        <th colspan="2">
+                            <label for="listaestacoes">Permissões de EStações</label>
+                            <select class="form-control" id="listaestacoes" onChange="adicionar('listaestacoes', 'permissoes')">
+                                <option></option>
+                            #{list items:estacoes, as:'estacao'}
+                                <option value="${estacao.id}">
+                                    ${estacao.nome}
+                                    ${estacao.latitude}, ${estacao.longitude}
+                                </option>
+                            #{/list}
+                            </select>
+                        </th>
+                    </thead>
+                    <thead>
+                        <th>Estação</th>
+                        <th>Ações</th>
+                    </thead>
+                    #{if usuario.estacao}
+                        #{list items:usuario.estacao, as:'estacao'}
+                        <tr id='${estacao.id}'>
+                            <input type="hidden" name="estacoesIDs" value="${estacao.id}" id="i${estacao.id}" >
+                            <td id='t${estacao.id}'>
+                                ${estacao.nome} - 
+                                ${estacao.latitude}, ${estacao.longitude}
+                            </td>
+                            <td>
+                                <a href="javascript:remover(${estacao.id});">
+                                    <i class="fa fa-remove"></i>Remover
+                                </a>
+                            </td>
+                        </tr>
+                        #{/list}
+                    #{/if}  
+                </table>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success btn-block" type="submit" value="Salvar">
+                <br>
+                <a href="@{Usuarios.listar}">
+                     <input type=button value="Cancelar" class="btn btn-danger btn-block">
+                </a> 
+            </div>
+        </form>
+    </div>
 </div>
+
+<script>
+    function adicionar(origem, destino){
+        seletor = document.getElementById(origem);
+        input = document.createElement("input");
+        input.type="hidden";
+        input.name="estacoesIDs";
+        input.value=seletor.value;
+        input.id = "i"+input.value;
+
+        opcao = seletor.children[seletor.selectedIndex];
+        texto = document.createElement("t");
+        texto.id = "t"+input.value;
+        texto.textContent = opcao.textContent;
+        td1 = document.createElement("td");
+        td1.appendChild(texto);
+
+        botao = document.createElement("a");
+        botao.href = "javascript:remover("+input.value+")";
+        botao.innerHTML = "<i class='fa fa-remove'></i>Remover";
+        td2 = document.createElement("td");
+        td2.appendChild(botao);
+
+        divisor = document.createElement("tr");
+        divisor.id=input.value;
+        divisor.appendChild(input);
+        divisor.appendChild(td1);
+        divisor.appendChild(td2);
+
+        document.getElementById(destino).appendChild(divisor);
+        opcao.parentNode.removeChild(opcao);
+    }
+
+    function remover(id_origem){
+       origem = document.getElementById(id_origem);
+       destino = document.getElementById("listaestacoes");
+       opcao = document.createElement("option");
+       opcao.textContent = document.getElementById("t"+id_origem).innerText;
+       opcao.value = id_origem;
+       destino.appendChild(opcao);
+       origem.parentNode.removeChild(origem);
+    }
+</script>
